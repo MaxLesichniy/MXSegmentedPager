@@ -252,6 +252,10 @@
     }
 }
 
+- (void)pagerView:(MXPagerView *)pagerView didMoveToPage:(UIView *)page atIndex:(NSInteger)index {
+    [self changedToIndex:index];
+}
+
 #pragma mark <MXPagerViewDataSource>
 
 - (NSInteger)numberOfPagesInPagerView:(MXPagerView *)pagerView {
