@@ -39,6 +39,10 @@
     
     //Gets number of pages
     _count = [self.dataSource numberOfPagesInSegmentedPager:self];
+    if (_count == 0) {
+        return;
+    }
+    
     NSAssert(_count > 0, @"Number of pages in MXSegmentedPager must be greater than 0");
     
     //Gets the segmented control height
@@ -228,6 +232,12 @@
     }
     
     UIView<MXPageProtocol> *page = (id) self.pager.selectedPage;
+        
+    if (scrollView == self.contentView && [self.delegate respondsToSelector:@selector(segmentedPager:shouldScrollWithView:)]) {
+        if (![self.delegate segmentedPager:self shouldScrollWithView:subView]) {
+            return NO;
+        }
+    }
     
     if ([page respondsToSelector:@selector(segmentedPager:shouldScrollWithView:)]) {
         return [page segmentedPager:self shouldScrollWithView:subView];

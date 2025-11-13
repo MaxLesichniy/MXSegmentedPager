@@ -128,6 +128,8 @@ typedef NS_ENUM(NSInteger, MXSegmentedControlPosition) {
  */
 - (BOOL)segmentedPagerShouldScrollToTop:(MXSegmentedPager *)segmentedPager NS_SWIFT_NAME(segmentedPagerShouldScrollToTop(_:));
 
+- (BOOL)segmentedPager:(MXSegmentedPager *)segmentedPager shouldScrollWithView:(__kindof UIView *)view;
+
 @end
 
 /**
